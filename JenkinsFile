@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build and run the kedro docker container'){
+            steps{
+                script{
+                    sh 'docker-compose up --build'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Kedro pipeline and model deployment done successfully!"
+        }
+        failure {
+            echo "There was an error in running and model deployment..."
+        }
+    }
+}
