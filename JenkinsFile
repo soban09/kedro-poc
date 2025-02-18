@@ -5,7 +5,7 @@ pipeline {
         stage('Build and run the kedro docker container'){
             steps{
                 script{
-                    bat 'docker-compose up --build'
+                    bat 'docker-compose up --build -d'
                 }
             }
         }
