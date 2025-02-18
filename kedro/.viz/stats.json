@@ -1,0 +1,1 @@
+{"diabetes-dev": {"rows": 5000, "columns": 10, "file_size": 258786}, "diabetes": {"rows": 5000, "columns": 10, "file_size": 798408}, "X_train": {"rows": 4000, "columns": 8}, "X_test": {"rows": 1000, "columns": 8}}

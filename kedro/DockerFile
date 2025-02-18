@@ -1,0 +1,21 @@
+FROM python:3.12-alpine
+
+WORKDIR /app
+
+RUN apk add --no-cache \
+    build-base \
+    gcc \
+    musl-dev \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+    cargo \
+    g++ \
+    gfortran \
+    openblas-dev
+
+RUN pip install kedro kedro-viz kedro-datasets scikit-learn pandas
+
+COPY ./ /app
+
+EXPOSE 4141

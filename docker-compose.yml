@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  kedro:
+    build:
+      context: ./kedro
+      dockerfile: DockerFile
+    ports:
+      - "4141:4141"
+    volumes:
+      - ./model:/app/data/06_models/model.pkl
+    restart: on-failure
+    command: sh -c "kedro run --pipeline=machinelearning && kedro viz --host 0.0.0.0 --port 4141"
+  
+  flask:
+    build:
+      context: ./server
+      dockerfile: DockerFile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./model:/app/model
+    depends_on: 
+      - kedro
+    restart: always
+    command: python app.py

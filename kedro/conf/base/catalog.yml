@@ -1,0 +1,17 @@
+diabetes-dev:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/diabetes-dev.csv
+
+diabetes:
+  type: pandas.CSVDataset
+  filepath: data/03_primary/diabetes.csv
+
+model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/model.pkl
+  versioned: true
+
+evaluation-metrics:
+  type: tracking.MetricsDataset
+  filepath: data/09_tracking/evaluation-metrics.json
+  versioned: true

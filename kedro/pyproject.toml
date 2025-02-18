@@ -1,0 +1,33 @@
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
+
+[project]
+requires-python = ">=3.9"
+name = "get_started"
+readme = "README.md"
+dynamic = [ "version",]
+dependencies = [ "ipython>=8.10", "jupyterlab>=3.0", "notebook", "kedro[jupyter]~=0.19.11", "kedro-datasets[pandas-csvdataset, pandas-exceldataset, pandas-parquetdataset, plotly-plotlydataset, plotly-jsondataset, matplotlib-matplotlibwriter]>=3.0", "kedro-viz>=6.7.0", "scikit-learn~=1.5.1", "seaborn~=0.12.1",]
+
+[project.scripts]
+get-started = "get_started.__main__:main"
+
+[tool.kedro]
+package_name = "get_started"
+project_name = "get-started"
+kedro_init_version = "0.19.11"
+tools = "['Data Structure', 'Kedro Viz']"
+example_pipeline = "False"
+source_dir = "src"
+
+[project.entry-points."kedro.hooks"]
+
+[tool.setuptools.dynamic.version]
+attr = "get_started.__version__"
+
+[tool.setuptools.packages.find]
+where = [ "src",]
+namespaces = false
+
+[tool.kedro_telemetry]
+project_id = "2108d3a7035e45f6a00e21e365a8071b"
